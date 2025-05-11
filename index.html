@@ -1129,6 +1129,38 @@
             .projects-grid .project-card, .projects-grid .project-card.wide, .projects-grid .project-card.tall {
                 grid-column: 1 / -1;
             }
+            
+            /* Make all project cards consistent on mobile */
+            .project-card:not(.featured) {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            /* Make project images smaller and centered on mobile */
+            .project-card .project-image {
+                aspect-ratio: 16 / 9;
+                width: 100%;
+                max-height: 200px;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            
+            /* Make project info visible and consistent for all cards */
+            .project-card:not(.featured) .project-info {
+                position: relative;
+                opacity: 1;
+                transform: translateY(0);
+                padding: 1.5rem;
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-top: none;
+            }
+
+            /* Ensure all project descriptions have same styling */
+            .project-description {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
 
             .visual-grid {
                 grid-template-columns: 1fr;
@@ -1146,7 +1178,18 @@
                 font-size: clamp(2.5rem, 8vw, 5rem);
             }
 
+            .project-card.featured {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .project-card.featured .project-image {
+                grid-column: 1 / -1;
+                width: 100%;
+            }
+            
             .project-card.featured .project-info {
+                grid-column: 1 / -1;
                 padding: 1.5rem;
             }
 
@@ -1198,7 +1241,7 @@
 <script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script></head>
 <body>
     <!-- Custom Cursor -->
-    <div class="cursor" style="left: 672px; top: 223px;">
+    <div class="cursor" style="left: 300px; top: 27px;">
         <div class="cursor-dot"></div>
     </div>
 
@@ -1227,13 +1270,7 @@
                     <li class="menu-item" data-index="05"><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <div class="navigation-footer">
-                <div class="social-links">
-                    <a href="#" class="social-link">Instagram</a>
-                    <a href="#" class="social-link">Dribbble</a>
-                    <a href="#" class="social-link">LinkedIn</a>
-                </div>
-            </div>
+         
         </div>
     </div>
 
@@ -1291,7 +1328,7 @@
                 <!-- Featured Project -->
                 <div class="project-card featured animated-elem visible">
                     <div class="project-image">
-                        <img src="https://i.ibb.co/rrV5jrz/building123.jpg" alt="Project 1">
+                        <img src="https://pixabay.com/get/g5637de8a66e047b3328459f9d25b13b9fc9daad15aaaeb220d4724ceb0cce2846621015c8f8379f37497a04205bdb4923542a51adf173858257c45032886ae10_1280.jpg" alt="Modern Building Architecture">
                     </div>
                     <div class="project-info">
 
@@ -1313,7 +1350,7 @@
                     <!-- Project 2 -->
                     <div class="project-card animated-elem visible">
                         <div class="project-image">
-                            <img src="https://i.ibb.co/35ZdJ5Q/box123.png" alt="Project 2">
+                            <img src="https://i.ibb.co/8nZshntM/box123.png" alt="Glass Facade Building">
                         </div>
                         <div class="project-info">
                             <div class="project-category"></div>
@@ -1324,7 +1361,7 @@
                     <!-- Project 3 -->
                     <div class="project-card animated-elem visible">
                         <div class="project-image">
-                            <img src="https://i.ibb.co/G4VVJCN/house123.png" alt="Project 3">
+                            <img src="https://i.ibb.co/G4VVJCNr/house123.png" alt="Modern White Building">
                         </div>
                         <div class="project-info">
 
@@ -1341,7 +1378,7 @@
                     <!-- Project 4 -->
                     <div class="project-card wide animated-elem visible">
                         <div class="project-image">
-                            <img src="https://i.ibb.co/CK9GYKG/2D123.png" alt="Project 4">
+                            <img src="https://i.ibb.co/CK9GYKGC/2D123.png" alt="Modern White House">
                         </div>
                         <div class="project-info">
 
@@ -1356,7 +1393,7 @@
                     <!-- Project 5 -->
                     <div class="project-card tall animated-elem visible">
                         <div class="project-image">
-                            <img src="https://i.ibb.co/bSRjbX8/bb123.png" alt="Project 5">
+                            <img src="https://i.ibb.co/g5Fb4JB/bb123.png" alt="Modern Interior">
                         </div>
                         <div class="project-info">
 
@@ -1399,7 +1436,7 @@
 
             <div class="about-container">
                 <div class="about-image animated-elem visible">
-                    <img src="https://i.ibb.co/spVCNTt/IMG-0700.jpg" alt="Studio photo">
+                    <img src="https://i.ibb.co/BK6g0d0R/IMG-3345.jpg" alt="Architect Portrait">
                     <div class="about-image-frame"></div>
                 </div>
 
@@ -1459,7 +1496,11 @@
                         </div>
                     </div>
 
-             
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Dribbble</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
                 </div>
 
                 <div class="contact-form animated-elem visible">
