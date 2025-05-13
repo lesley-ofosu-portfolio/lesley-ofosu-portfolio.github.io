@@ -1,8 +1,8 @@
 <html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lesley Ofosu | Architecture, Art, Vision</title>
-    <style>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     <title>Lesley Ofosu | Architecture, Art, Vision</title>
+     <style>
         @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap");
 
         :root {
@@ -294,6 +294,10 @@
         .nav-open .menu-item:nth-child(5) {
             transition-delay: 0.4s;
         }
+        
+        .nav-open .menu-item:nth-child(6) {
+            transition-delay: 0.45s;
+        }
 
         .menu-item[data-index]::before {
             content: attr(data-index);
@@ -350,15 +354,15 @@
         }
 
         .nav-open .social-link:nth-child(1) {
-            transition-delay: 0.45s;
-        }
-
-        .nav-open .social-link:nth-child(2) {
             transition-delay: 0.5s;
         }
 
-        .nav-open .social-link:nth-child(3) {
+        .nav-open .social-link:nth-child(2) {
             transition-delay: 0.55s;
+        }
+
+        .nav-open .social-link:nth-child(3) {
+            transition-delay: 0.6s;
         }
 
         .container {
@@ -645,21 +649,14 @@
         }
 
         .project-card:not(.featured) .project-info {
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
             width: 100%;
-            padding: 2rem;
-            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
-            z-index: 1;
-            transform: translateY(30%);
-            opacity: 0;
-            transition: all var(--transition-medium);
-        }
-
-        .project-card:not(.featured):hover .project-info {
-            transform: translateY(0px);
-            opacity: 1;
+            padding: 1.5rem;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-top: none;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .project-image img {
@@ -717,7 +714,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-bottom: 4rem;
         }
@@ -725,23 +722,30 @@
         .project-card:not(.featured) {
             overflow: hidden;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card:not(.featured) .project-image {
-            height: 100%;
-            aspect-ratio: auto;
+            height: 250px;
+            width: 100%;
         }
 
-        .projects-grid .project-card {
-            grid-column: span 6;
+        .project-card:not(.featured) .project-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-top: none;
         }
 
-        .projects-grid .project-card.wide {
-            grid-column: span 8;
-        }
-
+        /* Remove special sizing classes since we want uniform sizing */
+        .projects-grid .project-card,
+        .projects-grid .project-card.wide,
         .projects-grid .project-card.tall {
-            grid-area: span 2 / span 4;
+            grid-column: span 1;
         }
 
         .view-more {
@@ -758,99 +762,64 @@
             margin-bottom: 5rem;
         }
 
-        .approach-intro {
-            max-width: 800px;
-            margin-bottom: 5rem;
+        /* Art Gallery Styles */
+        .art-section {
+            padding-top: var(--section-gap);
         }
-
-        .approach-intro p {
-            font-size: 1.5rem;
-            line-height: 1.5;
-            color: var(--color-text);
-            font-weight: 300;
-        }
-
-        .principles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .principle {
-            padding: 2.5rem;
-            background-color: var(--color-surface);
-            position: relative;
-            overflow: hidden;
-            transition: transform var(--transition-medium);
-            border: 1px solid var(--color-border);
-        }
-
-        .principle:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-text-faded);
-        }
-
-        .principle-number {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            color: var(--color-text-faded);
-            opacity: 0.5;
-            font-weight: 700;
-        }
-
-        .principle-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            letter-spacing: -0.02em;
-            font-weight: 600;
-        }
-
-        .principle-title::after {
-            content: "";
-            position: absolute;
-            bottom: -0.75rem;
-            left: 0px;
-            width: 2rem;
-            height: 1px;
-            background-color: var(--color-text-faded);
-        }
-
-        .principle-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--color-text-muted);
-        }
-
-        .approach-visual {
-            margin-top: 5rem;
-        }
-
-        .visual-grid {
+        
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-top: 2rem;
         }
-
-        .grid-item {
-            overflow: hidden;
+        
+        .art-item {
             position: relative;
-            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            transition: transform var(--transition-medium);
         }
-
-        .grid-item img {
+        
+        .art-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-text-faded);
+        }
+        
+        .art-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+        }
+        
+        .art-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform var(--transition-medium);
         }
-
-        .grid-item:hover img {
+        
+        .art-item:hover .art-image img {
             transform: scale(1.05);
+        }
+        
+        .art-info {
+            padding: 1.5rem;
+            background-color: var(--color-surface);
+        }
+        
+        .art-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            font-weight: 600;
+        }
+        
+        .art-medium {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
         }
 
         .about-section {
@@ -1076,15 +1045,10 @@
             margin-bottom: 0.5rem;
             text-transform: uppercase;
         }
-
-        .footer-copyright {
-            color: var(--color-text-faded);
-            font-size: 0.8rem;
-        }
-
+        
         @media (max-width: 1200px) {
-            .projects-grid .project-card {
-                grid-column: span 6;
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .project-card.featured {
@@ -1106,6 +1070,10 @@
             .about-details {
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -1125,38 +1093,20 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
-            .projects-grid .project-card, .projects-grid .project-card.wide, .projects-grid .project-card.tall {
-                grid-column: 1 / -1;
-            }
             
-            /* Make all project cards consistent on mobile */
-            .project-card:not(.featured) {
-                display: flex;
-                flex-direction: column;
-            }
-            
-            /* Make project images smaller and centered on mobile */
+            /* Make project images smaller on mobile */
             .project-card .project-image {
-                aspect-ratio: 16 / 9;
+                height: 200px;
                 width: 100%;
-                max-height: 200px;
                 overflow: hidden;
                 margin: 0 auto;
             }
             
-            /* Make project info visible and consistent for all cards */
+            /* Project info styling for mobile */
             .project-card:not(.featured) .project-info {
-                position: relative;
-                opacity: 1;
-                transform: translateY(0);
-                padding: 1.5rem;
-                background: var(--color-surface);
-                border: 1px solid var(--color-border);
-                border-top: none;
+                padding: 1.25rem;
             }
 
-            /* Ensure all project descriptions have same styling */
             .project-description {
                 font-size: 0.9rem;
                 margin-bottom: 1rem;
@@ -1201,6 +1151,10 @@
             .contact-form {
                 padding: 1.5rem;
             }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
 
             img {
                 max-width: 100%;
@@ -1237,11 +1191,23 @@
             opacity: 1;
             transform: translateY(0px);
         }
+
+        .approach-intro {
+            max-width: 800px;
+            margin-bottom: 5rem;
+        }
+
+        .approach-intro p {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            color: var(--color-text);
+            font-weight: 300;
+        }
     </style>
-<script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script></head>
+<script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script></head>
 <body>
     <!-- Custom Cursor -->
-    <div class="cursor" style="left: 300px; top: 27px;">
+    <div class="cursor" style="left: 520px; top: 362px;">
         <div class="cursor-dot"></div>
     </div>
 
@@ -1265,9 +1231,10 @@
                 <ul>
                     <li class="menu-item" data-index="01"><a href="#home">Home</a></li>
                     <li class="menu-item" data-index="02"><a href="#projects">Projects</a></li>
-                    <li class="menu-item" data-index="03"><a href="#approach">Approach</a></li>
-                    <li class="menu-item" data-index="04"><a href="#about">About</a></li>
-                    <li class="menu-item" data-index="05"><a href="#contact">Contact</a></li>
+                    <li class="menu-item" data-index="03"><a href="#art">Art</a></li>
+                    <li class="menu-item" data-index="04"><a href="#approach">Approach</a></li>
+                    <li class="menu-item" data-index="05"><a href="#about">About</a></li>
+                    <li class="menu-item" data-index="06"><a href="#contact">Contact</a></li>
                 </ul>
             </div>
          
@@ -1276,8 +1243,8 @@
 
     <!-- Fixed Elements -->
     <div class="fixed-elements">
-
-        <div class="page-number">02 / 05</div>
+        <div class="corner-text">Lesley Ofosu © 2023</div>
+        <div class="page-number">02 / 06</div>
     </div>
 
     <!-- Menu Button -->
@@ -1331,17 +1298,16 @@
                         <img src="https://i.ibb.co/rrV5jrz/building123.jpg" alt="Modern Building Architecture">
                     </div>
                     <div class="project-info">
-
+                        <div class="project-category">Architecture</div>
                         <h3 class="project-title">Axon Tower</h3>
-                        <p class="project-description">The tower’s raw concrete design and 
-                            sustainable features reflect the author’s 
+                        <p class="project-description">The tower's raw concrete design and 
+                            sustainable features reflect the author's 
                             commitment to ecological stewardship, 
                             including the use of renewable energy sources 
                             with minimal environmental impact. Mayfield 
                             draws inspiration from the play of light and 
-                            shadows against the Caribbean’s serene 
+                            shadows against the Caribbean's serene 
                             waters.</p>
-
                     </div>
                 </div>
 
@@ -1352,10 +1318,6 @@
                         <div class="project-image">
                             <img src="https://i.ibb.co/8nZshntM/box123.png" alt="Glass Facade Building">
                         </div>
-                        <div class="project-info">
-                            <div class="project-category"></div>
-
-                        </div>
                     </div>
 
                     <!-- Project 3 -->
@@ -1364,46 +1326,82 @@
                             <img src="https://i.ibb.co/G4VVJCNr/house123.png" alt="Modern White Building">
                         </div>
                         <div class="project-info">
-
-                            <h3 class="project-title">                                                                                                                                         
-                                “The Good of Gooden”                                                                
-                                </h3>
-                            <p class="project-description">“Huff + Gooden Architects” was created in 1998 by Mario Gooden and his 
+                            <div class="project-category">Architecture</div>
+                            <h3 class="project-title">The Good of Gooden</h3>
+                            <p class="project-description">"Huff + Gooden Architects" was created in 1998 by Mario Gooden and his 
                                 partner Mabel O. Wilson. The New York City-based firm has worked on a 
-                                variety of projects involving architecture, design, and culture. </p>
-
+                                variety of projects involving architecture, design, and culture.</p>
                         </div>
                     </div>
 
                     <!-- Project 4 -->
-                    <div class="project-card wide animated-elem visible">
+                    <div class="project-card animated-elem visible">
                         <div class="project-image">
                             <img src="https://i.ibb.co/CK9GYKGC/2D123.png" alt="Modern White House">
                         </div>
                         <div class="project-info">
-
+                            <div class="project-category">Sustainable Design</div>
                             <h3 class="project-title">SunnySide Pavilion</h3>
                             <p class="project-description">This pavilion is designed with three core principles: sustainability, aesthetic appeal, and connectivity. 
                                 Constructed using eco-friendly materials such as reclaimed wood, and bamboo, it minimizes environmental 
                                 impact while ensuring durability.</p>
-
                         </div>
                     </div>
 
                     <!-- Project 5 -->
-                    <div class="project-card tall animated-elem visible">
+                    <div class="project-card animated-elem visible">
                         <div class="project-image">
                             <img src="https://i.ibb.co/g5Fb4JB/bb123.png" alt="Modern Interior">
-                        </div>
-                        <div class="project-info">
-
-                            <h3 class="project-title"></h3>
-                            <p class="project-description"> </p>
-
                         </div>
                     </div>
 
         </div></div></section>
+
+        <!-- Art Section -->
+        <section class="art-section" id="art">
+            <div class="section-header">
+                <div class="section-label">My Art</div>
+                <h2 class="section-title">Art Gallery</h2>
+                <div class="section-description">
+                    A collection of my original art pieces, exploring different mediums, techniques, and expressions.
+                </div>
+            </div>
+
+            <div class="art-gallery">
+                <div class="gallery-grid">
+                    <div class="art-item animated-elem visible">
+                        <div class="art-image">
+                            <img src="https://i.ibb.co/wh46tkYt/IMG-4889.jpg" alt="Art Piece">
+                        </div>
+                        <div class="art-info">
+                            <div class="art-title">Thee Perfect Girl</div>
+                        </div>
+                    </div>
+
+                    <div class="art-item coming-soon animated-elem visible">
+                        <div class="art-image" style="background-color: var(--color-surface-light); display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 2rem; text-align: center;">
+                            <div style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem; opacity: 0.7;">More Coming Soon</div>
+                            <div style="width: 50px; height: 50px; border: 2px solid var(--color-text-faded); border-radius: 50%; border-top-color: var(--color-text); animation: spin 1.5s linear infinite;"></div>
+                        </div>
+                    </div>
+                    
+                    <style>
+                        @keyframes spin {
+                            0% { transform: rotate(0deg); }
+                            100% { transform: rotate(360deg); }
+                        }
+                        
+                        .coming-soon .art-image {
+                            cursor: default;
+                        }
+                        
+                        .coming-soon:hover {
+                            transform: none;
+                        }
+                    </style>
+                </div>
+            </div>
+        </section>
 
         <!-- Approach Section -->
         <section class="approach-section" id="approach">
