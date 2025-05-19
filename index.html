@@ -493,6 +493,29 @@
            object-fit: cover;
            filter: brightness(0.7) contrast(1.1);
        }
+       
+       .youtube-background {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           overflow: hidden;
+           pointer-events: none;
+       }
+       
+       .youtube-background iframe {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           width: 200vw;
+           height: 200vh;
+           min-height: 200vh;
+           min-width: 200vw;
+           transform: translate(-50%, -50%) scale(1.5);
+           filter: brightness(0.7) contrast(1.1);
+           z-index: var(--z-background);
+       }
 
        .hero-overlay {
            position: absolute;
@@ -1342,9 +1365,9 @@
        }
    </style>
 <script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script><script id="simplify-jobs-page-script" src="chrome-extension://pbanhockgagggenencehbnadejlgchfc/js/pageScript.bundle.js"></script><script src="https://lib.yourware.so/yourware-lib.umd.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script><script src="https://lib.youware.com/youware-lib.1747145198.js" id="yourware-lib"></script></head>
-<body>
+<body class="">
    <!-- Custom Cursor -->
-   <div class="cursor" style="left: 315px; top: 3px;">
+   <div class="cursor" style="left: 226px; top: 0px;">
        <div class="cursor-dot"></div>
    </div>
 
@@ -1393,9 +1416,9 @@
    <!-- Hero Section -->
    <section class="hero-section" id="home">
        <div class="hero-media">
-           <video autoplay="" loop="" muted="" playsinline="" id="hero-video">
-               <source src="IMG_7544.mp4 type="video/mp4">
-           </video>
+           <div class="youtube-background">
+               <iframe id="youtube-background" src="https://www.youtube.com/embed/b9rc3E4gpyE?controls=0&amp;autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=b9rc3E4gpyE&amp;playsinline=1&amp;rel=0" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+           </div>
            <div class="hero-overlay"></div>
        </div>
 
